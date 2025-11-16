@@ -1,0 +1,20 @@
+services:
+  vaultwarden:
+    container_name: vaultwarden
+    image: vaultwarden/server:1.34.3
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Brisbane"
+    volumes:
+      - "/data/vaultwarden/data:/data"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.vaultwarden.rule: "Host(`vault.comprofix.com`)"
+      traefik.http.routers.vaultwarden.entrypoints: "https"
+      traefik.http.routers.vaultwarden.tls: "true"
+      traefik.http.routers.vaultwarden.service: "vaultwarden"
+      traefik.http.services.vaultwarden.loadbalancer.server.port: "80"
