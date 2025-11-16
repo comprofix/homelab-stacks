@@ -7,7 +7,7 @@ services:
     volumes:
       - "/data/omada/data:/opt/tplink/EAPController/data"
       - "/data/omada/logs:/opt/tplink/EAPController/logs"
-    env:
+    environment:
       PUID: "1000"
       PGID: "1000"
       TZ: "Australia/Brisbane"
