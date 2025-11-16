@@ -1,0 +1,11 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:17.0-alpine
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    env:
+      POSTGRES_PASSWORD: "{{POSTGRES_PASSWORD}}"
+    volumes:
+      - /data/postgres/data:/var/lib/postgresql/data
