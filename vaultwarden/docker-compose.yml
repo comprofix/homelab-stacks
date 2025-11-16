@@ -9,6 +9,7 @@ services:
       PUID: "1000"
       PGID: "1000"
       TZ: "Australia/Brisbane"
+      SIGNUPS_ALLOWED: "false"
     volumes:
       - "/data/vaultwarden/data:/data"
     labels:
