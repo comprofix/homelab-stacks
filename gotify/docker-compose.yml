@@ -1,7 +1,7 @@
 services:
   gotify:
     image: gotify/server:2.7.3
-    restart_policy: unless-stopped
+    restart: unless-stopped
     networks:
       - proxy
     volumes:
