@@ -1,0 +1,17 @@
+services:
+  omada:
+    container_name: omada
+    image: mbentley/omada-controller:6.0
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - "/data/omada/data:/opt/tplink/EAPController/data"
+      - "/data/omada/logs:/opt/tplink/EAPController/logs"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Brisbane"
+
+networks:
+  proxy:
+    external: true
