@@ -1,0 +1,25 @@
+services:
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr:5.28.0
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Brisbane"
+      DOCKER_MODS: "ghcr.io/themepark-dev/theme.park:radarr"
+    volumes:
+      - "/data/radarr/config:/config"
+      - /mnt/nfs/data:/data
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.radarr.rule: "Host(`radarr.comprofix.xyz`)"
+      traefik.http.routers.radarr.entrypoints: "https"
+      traefik.http.routers.radarr.tls: "true"
+      traefik.http.services.radarr.loadbalancer.server.port: "7878"
+
+networks:
+  proxy:
+    external: true
