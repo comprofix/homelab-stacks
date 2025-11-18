@@ -1,0 +1,24 @@
+services:
+  jellyseerr:
+    container_name: jellyseerr
+    image: fallenbagel/jellyseerr:2.7.3 
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Brisbane"
+    volumes:
+      - "/data/jellyseerr/config:/app/config"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.jellyseerr.rule: "Host(`jellyseerr.comprofix.xyz`)"
+      traefik.http.routers.jellyseerr.entrypoints: "https"
+      traefik.http.routers.jellyseerr.tls: "true"
+      traefik.http.services.jellyseerr.loadbalancer.server.port: "5055"
+
+networks:
+  proxy:
+    external: true
+    
