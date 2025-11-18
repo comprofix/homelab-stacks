@@ -1,0 +1,14 @@
+services:
+  mariadb:
+    container_name: "mariadb"
+    image: ghcr.io/linuxserver/mariadb:11.4.8
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      PUID: "0"
+      PGID: "0"
+      MYSQL_ROOT_PASSWORD: "{{MYSQL_ROOT_PASSWORD}}"
+      TZ: "Australia/Brisbane"
+    volumes:
+      - "/data/mariadb/config:/config"
