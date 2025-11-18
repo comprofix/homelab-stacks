@@ -1,0 +1,35 @@
+services:
+  speedtest:
+    container_name: speedtest
+    image: lscr.io/linuxserver/speedtest-tracker:1.7.3
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      APP_KEY: "base64:ViJcK7rSIwGC+TAW7pRWnczB43zPPVHH2Hx80t7eVm0="
+      PUID: "1000"
+      PGID: "1000"
+      DB_CONNECTION: "mysql"
+      DB_HOST: "{{ MYSQL_HOST }}"
+      DB_PORT: "3306"
+      DB_DATABASE: "{{ST_DATABASE}}"
+      DB_USERNAME: "{{ST_DB_USERNAME}}"
+      DB_PASSWORD: "{{ST_DB_PASSWORD}}"
+      TZ: "Australia/Brisbane"
+      SPEEDTEST_SCHEDULE: "0 * * * *"
+      DISPLAY_TIMEZONE: "Australia/Brisbane"
+    volumes:
+      - "/data/speedtest/config:/config"
+      - "/data/speedtest/web:/etc/ssl/web"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.speedtest.rule: "Host(`speedtest.comprofix.xyz`)"
+      traefik.http.routers.speedtest.entrypoints: "https"
+      traefik.http.routers.speedtest.tls: "true"
+      traefik.http.services.speedtest.loadbalancer.server.port: "80"
+      traefik.http.services.speedtest.loadbalancer.server.scheme: "http"
+
+networks:
+  proxy:
+    external: true
+    
