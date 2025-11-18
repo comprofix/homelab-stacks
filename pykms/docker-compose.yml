@@ -1,7 +1,7 @@
 services:
   pykms:
     container_name: pykms
-    image: ghcr.io/py-kms-organization/py-kms:latest@sha256:07e5295d563df9e8f5165109d79cf06e425559c8b7f465c3c22578f62f8dce59
+    image: ghcr.io/py-kms-organization/py-kms:latest@sha256:6a8c012e016efea611bf465713bbc08a36b4bfb2e60115e4481f6bb6b9f5b2a4
     restart: unless-stopped
     ports:
       - "1688:1688"
