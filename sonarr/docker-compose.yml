@@ -1,0 +1,25 @@
+services:
+  sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr:4.0.16
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Brisbane"
+      DOCKER_MODS: "ghcr.io/themepark-dev/theme.park:sonarr"
+    volumes:
+      - "/data/sonarr/config/:/config"
+      - /mnt/nfs/data:/data
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.sonarr.rule: "Host(`sonarr.comprofix.xyz`)"
+      traefik.http.routers.sonarr.entrypoints: "https"
+      traefik.http.routers.sonarr.tls: "true"
+      traefik.http.services.sonarr.loadbalancer.server.port: "8989"
+
+networks:
+  proxy:
+    external: true
