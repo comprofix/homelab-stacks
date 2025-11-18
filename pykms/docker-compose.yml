@@ -1,0 +1,16 @@
+services:
+  pykms:
+    container_name: pykms
+    image: ghcr.io/py-kms-organization/py-kms:latest@sha256:07e5295d563df9e8f5165109d79cf06e425559c8b7f465c3c22578f62f8dce59
+    restart: unless-stopped
+    ports:
+      - "1688:1688"
+    environment:
+      IP: "0.0.0.0"
+      SQLITE: "true"
+      HWID: "RANDOM"
+      LOGLEVEL: "INFO"
+    volumes:
+      - "/data/pykms/db:/home/py-kms/db"
+      - /etc/localtime:/etc/localtime:ro
+
