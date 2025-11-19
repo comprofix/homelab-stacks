@@ -10,7 +10,7 @@ services:
       PUID: "1000"
       PGID: "1000"
       DB_CONNECTION: "mysql"
-      DB_HOST: "{{ MYSQL_HOST }}"
+      DB_HOST: "mysql.comprofix.xyz"
       DB_PORT: "3306"
       DB_DATABASE: "{{ST_DATABASE}}"
       DB_USERNAME: "{{ST_DB_USERNAME}}"
