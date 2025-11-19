@@ -16,7 +16,7 @@ services:
       RECIPE_DISABLE_COMMENTS: "true"
       RECIPE_DISABLE_AMOUNT: "true"
       BASE_URL: "mealie.comprofix.xyz"
-      SMTP_HOST: "{{MAIL_HOST}}"
+      SMTP_HOST: "${MAIL_HOST}"
     volumes:
       - "/data/mealie/data/:/app/data"
     labels:

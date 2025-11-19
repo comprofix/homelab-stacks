@@ -29,15 +29,15 @@ services:
     environment:
       BASE_URL: https://planka.comprofix.xyz
       DATABASE_URL: postgresql://postgres@postgres-planka/planka
-      SECRET_KEY: "{{SECRET_KEY}}"
+      SECRET_KEY: "${SECRET_KEY}"
       TRUST_PROXY: "true"
       PUID: "1000"
       PGID: "1000"
       TZ: "Australia/Brisbane"
-      DEFAULT_ADMIN_EMAIL: "{{ planka_email }}"
-      DEFAULT_ADMIN_PASSWORD: "{{ planka_password }}"
-      DEFAULT_ADMIN_NAME: "{{ planka_name }}"
-      DEFAULT_ADMIN_USERNAME: "{{ planka_username }}"
+      DEFAULT_ADMIN_EMAIL: "${planka_email}"
+      DEFAULT_ADMIN_PASSWORD: "${planka_password}"
+      DEFAULT_ADMIN_NAME: "${planka_name}"
+      DEFAULT_ADMIN_USERNAME: "${planka_username}"
     labels:
       traefik.enable: "true"
       traefik.http.routers.planka.rule: "Host(`planka.comprofix.xyz`)"
