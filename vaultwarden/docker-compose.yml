@@ -31,6 +31,7 @@ services:
       CRON: "0 4 * * *"
       BACKUP_KEEP_DAYS: "14"
       ZIP_PASSWORD: "${VAULTWARDEN_BACKUP_ZIP_PASSWORD}"
+      RCLONE_REMOTE_NAME: "vaultwarden"
     volumes:
       - "/data/vaultwarden/data:/bitwarden/data"
       - "/data/vaultwardenbackup/config:/config"
