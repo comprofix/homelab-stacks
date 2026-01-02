@@ -1,7 +1,7 @@
 services:
   gotify:
     container_name: gotify
-    image: gotify/server:2.7.3
+    image: gotify/server:2.8.0
     restart: unless-stopped
     networks:
       - proxy
