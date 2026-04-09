@@ -22,7 +22,7 @@ services:
 
   vaultwarden-backup:
     container_name: vaultwardenbackup
-    image: ttionya/vaultwarden-backup:1.26.5
+    image: ttionya/vaultwarden-backup:1.26.6
     restart: unless-stopped
     environment:
       PUID: "1000"
