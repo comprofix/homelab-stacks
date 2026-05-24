@@ -1,7 +1,7 @@
 services:
   mariadb:
     container_name: "mariadb"
-    image: ghcr.io/linuxserver/mariadb:11.4.10
+    image: ghcr.io/linuxserver/mariadb:11.4.11
     restart: unless-stopped
     ports:
       - 3306:3306
